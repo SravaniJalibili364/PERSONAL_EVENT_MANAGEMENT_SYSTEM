@@ -1,4 +1,3 @@
-from os import PRIO_PGRP
 import mysql.connector as db
 import datetime
 
@@ -13,33 +12,13 @@ mydb = db.connect(
 
 cur = mydb.cursor()
 
+# Database Creation
 #s = "CREATE DATABASE EMS"  
 #cur.execute(s)
 #cur.close()
 #print("Database created!")
 
-
-
-# Next Two days Events
-
-
-
-
-
-# For Showing what the events are there . 
-
-def show_events():
-  mydb = db.connect(host = "localhost",user = "root", db = "EMS")
-  cur = mydb.cursor()
-  cur.execute("select * from event_table")
-  for i in cur:
-    print(i)
-  mydb.commit()
-
-  print("these are events")
-
-
-
+# For Event_table creation
 #def event_table():
 #  mydb = db.connect(
 #   host="localhost",
@@ -55,10 +34,22 @@ def show_events():
 # mydb.close()
 # print("Table Created!")
 
-
-
 #event_table()
 
+
+# For Showing what the events are there . 
+def show_events():
+  mydb = db.connect(host = "localhost",user = "root", db = "EMS")
+  cur = mydb.cursor()
+  cur.execute("select * from event_table")
+  for i in cur:
+    print(i)
+  mydb.commit()
+
+  print("these are events")
+
+
+# For entering the new event
 def create_event():
   print("create event")
 
@@ -83,6 +74,7 @@ def create_event():
   print("Event Created!")
 
 
+# For updating the event
 def update_event():
    mydb = db.connect(
    host="localhost",
@@ -104,7 +96,9 @@ def update_event():
               event_type = %s ,location = %s , date = %s WHERE event_id = %s""",(username,event_id,event_name,event_type,location,date,event_id))
    mydb.commit()
    print("Updated Event")
-  
+
+
+# For deleting the event  
 def delete_event():
   mydb = db.connect(
   host="localhost",
@@ -119,6 +113,8 @@ def delete_event():
   print("Event Deleted")
   
 
+
+# By entering the person we can get events
 def search_event_by_person():
     mydb = db.connect(
     host="localhost",
@@ -134,6 +130,7 @@ def search_event_by_person():
     mydb.commit()
     print("Got the event")
 
+# By entering event type we can the events
 def search_event_by_event():
    mydb = db.connect(
    host="localhost",
@@ -150,6 +147,8 @@ def search_event_by_event():
    print("This is the event")
 
 
+
+# Upcoming events for the next seven days
 def upcoming_events():
    mydb = db.connect(
    host="localhost",
@@ -167,6 +166,8 @@ def upcoming_events():
    print("These are the upcoming events")
 
   
+# Gift suggestions for the event to buy or suggest to get
+
 def gifts_suggestion():
     event_type = input("Enter Event Type For Gifts Suggestions : ")
     if (event_type == "marriage"):
