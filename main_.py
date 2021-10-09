@@ -207,6 +207,7 @@ while ch != 8:
     print("\t6. SEARCH EVENT BY EVENT TYPE")
     print("\t7. UPCOMING EVENTS")
     print("\t8. Gifts Suggestion For Your Events")
+    print("\t9. Exit")
     print("\tSelect Your Option (1-8) ")
     ch = int(input())
 
@@ -227,6 +228,8 @@ while ch != 8:
       upcoming_events()
     elif(ch == 8):
       gifts_suggestion()
+    elif(ch == 9):
+      break
    
 
 
